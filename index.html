@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+    <title>GameOfLife</title>
+</head>
+
+<body>
+    <div id="container" class="container">
+        <div class="info-board">
+            <div>
+                <span>Field width:</span><br><input id="width-input" type=number autocomplete="off" value=60 step=10 min=10 max=100 onkeydown="return false">
+            </div>
+            <div>
+                <span>Field height:</span><br><input id="height-input" type=number autocomplete="off" value=50 step=10 min=10 max=100 onkeydown="return false">
+            </div>
+            <input id="set-dimensions-button" type="button" value="Set field dimensions">
+        </div>
+        <div class="info-board">
+            <div> </div>
+            <canvas id="field" class="field" id="field" width="600" height="500"></canvas>
+            <div> </div>
+        </div>
+        <div class="info-board">
+            <input id="populate-button" type="button" value="Populate randomly">
+            <input id="clear-button" type="button" value="Clear field">
+            <div>
+                <input id="resume-button" class="square-button" type="button" value="▶">
+                <input id="pause-button" class="square-button" type="button" value="⏸">
+                <input id="one-iteration-button" class="square-button" type="button" value="1 it.">
+            </div>
+            <input id="flyers-button" type="button" value="Populate with flyers">
+            <div> </div>
+            <div>
+                <span>Time between iterations (sec):</span><br><input id="speed-input" type=number autocomplete="off" value=1 step=0.1 min=0.1 max=2 onkeydown="return false">
+            </div>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
