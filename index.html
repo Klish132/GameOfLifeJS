@@ -17,9 +17,21 @@
                 <span>Field height:</span><br><input id="height-input" type=number autocomplete="off" value=50 step=10 min=10 max=100 onkeydown="return false">
             </div>
             <input id="set-dimensions-button" type="button" value="Set field dimensions">
-        </div>
-        <div class="info-board">
             <div> </div>
+            <div><span>Iteration: </span><span id="iteration-number">0</span></div>
+            <div> </div>
+        </div>
+        <div class="info-board center">
+            <div class="draw-option-box">
+                <div>
+                    <input id="draw-radio" type="radio" name="draw-option" value="draw" checked="true">
+                    <label for="draw-radio">Draw</label>
+                </div><br>
+                <div>
+                    <input id="erase-radio" type="radio" name="draw-option" value="erase">
+                    <label for="erase-radio">Erase</label>
+                </div><br>
+            </div>
             <canvas id="field" class="field" id="field" width="600" height="500"></canvas>
             <div> </div>
         </div>
@@ -27,9 +39,13 @@
             <input id="populate-button" type="button" value="Populate randomly">
             <input id="clear-button" type="button" value="Clear field">
             <div>
-                <input id="resume-button" class="square-button" type="button" value="▶">
-                <input id="pause-button" class="square-button" type="button" value="⏸">
-                <input id="one-iteration-button" class="square-button" type="button" value="1 it.">
+                <div class="player-control-box">
+                    <input id="resume-radio" name="player-control" type="radio">
+                    <label for="resume-radio" class="square">▶</label>
+                    <input id="pause-radio" checked="true" name="player-control" type="radio">
+                    <label for="pause-radio" class="square">⏸</label>
+                </div>
+                <input id="one-iteration-button" class="square" type="button" value="1 it.">
             </div>
             <input id="flyers-button" type="button" value="Populate with flyers">
             <div> </div>

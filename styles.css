@@ -20,6 +20,11 @@ body {
     text-align: center;
 }
 
+.info-board.center {
+    grid-column-gap: 0px;
+    align-items: center;
+}
+
 input[type="button"] {
     transition: 0.2s;
     font-family: Arial;
@@ -42,17 +47,44 @@ input[type="button"]:hover {
     background-color: lightblue;
 }
 
-input[type="button"].square-button {
-    width: 30px;
-    height: 30px;
-}
-
 input[type="number"] {
     width: auto;
     height: 20px;
     border: none;
     box-shadow: 4px 4px 2px 0px rgba(50, 50, 50, 0.75);
     border-radius: 10px;
+}
+
+.square {
+    width: 30px;
+    height: 30px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    transition: 0.2s;
+    display: inline-block;
+    font-family: Arial;
+    font-weight: bold;
+    width: 45px;
+    height: 25px;
+    box-shadow: 4px 4px 2px 0px rgba(50, 50, 50, 0.75);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+input[type="radio"]:checked+label {
+    background-color: lightblue;
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 2px 0px rgba(50, 50, 50, 0.75);
+}
+
+.player-control-box {
+    display: inline;
+    vertical-align: bottom;
 }
 
 .field {
