@@ -108,20 +108,30 @@ class Game {
         this.resetGame();
     }
     setCanvasDimensions() {
-        this.resetGame();
         let newWidth = parseInt(this.widthInput.value) * 10;
         let newHeight = parseInt(this.heightInput.value) * 10;
-        this.fieldWidth = parseInt(this.widthInput.value);
-        this.fieldHeight = parseInt(this.heightInput.value);
-        this.canvas.width = newWidth;
-        this.canvas.height = newHeight;
-        this.containerElement.style.width = (newWidth + 200).toString() + "px";
-        this.containerElement.style.height = (newHeight + 200).toString() + "px";
+        if (newWidth > 1000 || newHeight > 1000) {
+            alert("Height and Width must not be more than 100!");
+        }
+        else {
+            this.resetGame();
+            this.fieldWidth = parseInt(this.widthInput.value);
+            this.fieldHeight = parseInt(this.heightInput.value);
+            this.canvas.width = newWidth;
+            this.canvas.height = newHeight;
+            this.containerElement.style.width = (newWidth + 200).toString() + "px";
+            this.containerElement.style.height = (newHeight + 200).toString() + "px";
+        }
     }
     changeGameSpeed() {
         let speedInSeconds = parseFloat(this.speedInput.value);
-        let newSpeed = Math.floor(speedInSeconds * 1000);
-        this.currentGameSpeed = newSpeed;
+        if (speedInSeconds < 0.05 || speedInSeconds > 2) {
+            alert("Speed must be between 0.05s and 2s");
+        }
+        else {
+            let newSpeed = Math.floor(speedInSeconds * 1000);
+            this.currentGameSpeed = newSpeed;
+        }
     }
     onPlayerControlRadioChange() {
         if (this.resumeRadio.checked) {
@@ -361,28 +371,20 @@ class Game {
                 return 2;
         }
     }
+    drawFlyer(x, y) {
+        this.setAliveCell(x, y);
+        this.setAliveCell(x + 1, y + 1);
+        this.setAliveCell(x + 2, y - 1);
+        this.setAliveCell(x + 2, y);
+        this.setAliveCell(x + 2, y + 1);
+    }
     populateWithFlyers() {
         this.resetGame();
-        this.setAliveCell(3, 3);
-        this.setAliveCell(4, 4);
-        this.setAliveCell(5, 2);
-        this.setAliveCell(5, 3);
-        this.setAliveCell(5, 4);
-        this.setAliveCell(8, 3);
-        this.setAliveCell(9, 4);
-        this.setAliveCell(10, 2);
-        this.setAliveCell(10, 3);
-        this.setAliveCell(10, 4);
-        this.setAliveCell(13, 3);
-        this.setAliveCell(14, 4);
-        this.setAliveCell(15, 2);
-        this.setAliveCell(15, 3);
-        this.setAliveCell(15, 4);
-        this.setAliveCell(18, 3);
-        this.setAliveCell(19, 4);
-        this.setAliveCell(20, 2);
-        this.setAliveCell(20, 3);
-        this.setAliveCell(20, 4);
+        let flyerCount = 10;
+        for (let i = 1; i <= flyerCount; i++) {
+            this.drawFlyer(i * 5, 5);
+            console.log(i, 5);
+        }
         this.redrawField();
     }
     randomlyPopulateField() {
